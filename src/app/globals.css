@@ -6,6 +6,19 @@
   --foreground-rgb: 0, 0, 0;
   --background-start-rgb: 214, 219, 220;
   --background-end-rgb: 255, 255, 255;
+
+  --doc-height: 100%;
+}
+
+@media screen and (min-width: 600px) {
+  :root {
+    /*
+      M站页面在PC端显示的时候，字体大小默认为24px
+      viewport >= 600px 时，1rem = 600px / 100 * 4 = 24px
+     （因为我们限制了 div.-mobile-wrapper 的 max-width 为 600px）
+    */
+    font-size: 24px;
+  }
 }
 
 @media (prefers-color-scheme: dark) {
@@ -17,11 +30,32 @@
 }
 
 body {
+  margin: 0;
+  padding: 0;
+  height: 100vh;
   color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
+  background: #dae1e8;
+}
+
+/* M站页面需要在最外层容器上使用该类进行包裹，以保证页面的最大宽度为600px */
+/* 全局 css 以 - 开头 */
+.-mobile-wrapper {
+  max-width: 600px;
+  height: 100vh; /* fallback for Js load */
+  height: var(--doc-height);
+
+  /*
+    添加底部安全区的距离，避免iphone手机 页面被底部的圆角和小黑条所遮挡
+    如果设计稿的底部没有任何的内容需要显示的情况下，这个属性可以被移除
+  */
+  padding-bottom: calc(env(safe-area-inset-bottom, 0.5vh));
+
+  /* M站在PC显示的时候，页面可以居中显示 */
+  margin: 0 auto;
+
+  /* 使 absolute 子元素基于此容器定位 */
+  position: relative;
+
+  /* 建立 BFC，防止第一个子元素的 margin-top collapsing */
+  display: flow-root;
 }
