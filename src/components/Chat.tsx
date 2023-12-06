@@ -1,15 +1,15 @@
 'use client';
 
-import * as React from 'react';
 import { cn } from '@/utils';
 import { Input, Button } from '@nextui-org/react';
 import Message from './Message';
 import { addDropMessage } from '@/server';
+import { useState } from 'react';
 
 const Chat = () => {
-  const [newMessages, setNewMessages] = React.useState<Message[]>([]);
-  const [inputValue, setInputValue] = React.useState('');
-  const [loading, setLoading] = React.useState(false);
+  const [newMessages, setNewMessages] = useState<Message[]>([]);
+  const [inputValue, setInputValue] = useState('');
+  const [loading, setLoading] = useState(false);
 
   const handleInputChange = (e: any) => {
     setInputValue(e.target.value);
@@ -24,13 +24,10 @@ const Chat = () => {
 
       setNewMessages(newMessages);
       setInputValue('');
-
-      // @ts-ignore
-      // messagesEndRef.current.scrollIntoView({ behavior: 'smooth' });
     }
     setTimeout(() => {
       setLoading(false);
-    }, 500);
+    }, 100);
   };
 
   return (
