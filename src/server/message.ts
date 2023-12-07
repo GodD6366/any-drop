@@ -19,7 +19,7 @@ export const addDropMessage = async (value: string, user?: User) => {
       value: value,
       user: {
         connect: {
-          username: user.username,
+          id: user.id,
         },
       },
     },

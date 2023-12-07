@@ -1,12 +1,12 @@
 'use server';
 import { getDB } from '@/utils';
 
-export const getUser = async (username: string, token: string) => {
+export const getUser = async (name: string, pwd: string) => {
   const prisma = await getDB();
   const user = await prisma.user.findFirst({
     where: {
-      username,
-      token,
+      name,
+      pwd,
     },
   });
   return user;

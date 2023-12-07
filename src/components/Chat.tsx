@@ -1,5 +1,4 @@
 'use client';
-
 import { cn } from '@/utils';
 import { Input, Button } from '@nextui-org/react';
 import Message from './Message';
@@ -33,7 +32,7 @@ const Chat = () => {
   return (
     <div className='flex flex-col overflow-hidden p-2 h-full'>
       <Message newMessages={newMessages} />
-      <section className='w-[95vw] pb-2'>
+      <section className='w-[95vw] pb-2 max-w-[588px]'>
         <form
           className={cn(
             'w-full flex flex-row overflow-hidden justify-center items-center',

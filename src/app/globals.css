@@ -17,7 +17,7 @@
       viewport >= 600px 时，1rem = 600px / 100 * 4 = 24px
      （因为我们限制了 div.-mobile-wrapper 的 max-width 为 600px）
     */
-    font-size: 24px;
+    font-size: 18px;
   }
 }
 

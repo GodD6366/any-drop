@@ -28,12 +28,14 @@
     "build:count": "vite build --config scripts/vite.count.config.js"
   },
   "dependencies": {
+    "@next-auth/prisma-adapter": "^1.0.7",
     "@nextui-org/react": "^2.2.9",
     "@prisma/client": "^5.6.0",
     "clsx": "^2.0.0",
     "dayjs": "^1.11.10",
     "framer-motion": "^10.16.12",
     "next": "14.0.3",
+    "next-auth": "^4.24.5",
     "next-connect": "^1.0.0",
     "prisma": "^5.6.0",
     "react": "^18",

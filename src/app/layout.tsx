@@ -3,6 +3,7 @@ import { Inter } from 'next/font/google';
 import './globals.css';
 import { Providers } from './providers';
 import SetDocHeight from '@/utils/doc-height';
+import NextAuthProvider from '@/components/Auth';
 
 const inter = Inter({ subsets: ['latin'] });
 
@@ -28,8 +29,10 @@ export default function RootLayout({
   return (
     <html lang='zh-CN'>
       <body className={inter.className}>
-        <SetDocHeight />
-        <Providers>{children}</Providers>
+        <NextAuthProvider>
+          <SetDocHeight />
+          <Providers>{children}</Providers>
+        </NextAuthProvider>
       </body>
     </html>
   );
