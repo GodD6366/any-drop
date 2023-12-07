@@ -5,7 +5,7 @@ const prisma = new PrismaClient();
 const createTestUser = async () => {
   const user = await prisma.user.findFirst({
     where: {
-      username: 'godd',
+      name: 'godd',
     },
   });
 
@@ -15,17 +15,19 @@ const createTestUser = async () => {
 
   await prisma.user.create({
     data: {
-      username: 'godd',
-      nickname: 'GodD6366',
-      token: '6366',
+      name: 'godd',
+      nick: 'GodD6366',
+      pwd: '6366',
+      email: 'godd@test.com',
+      emailVerified: new Date(),
     },
   });
 };
-const getUser = async (username, token) => {
+const getUser = async (name, pwd) => {
   const user = await prisma.user.findFirst({
     where: {
-      username,
-      token,
+      name,
+      pwd,
     },
   });
   return user;
@@ -39,7 +41,8 @@ const CreateTestDropMessage = async () => {
       value: 'testtesttest',
       user: {
         connect: {
-          username: user.username,
+          id: user.id,
+          name: user.name,
         },
       },
     },
